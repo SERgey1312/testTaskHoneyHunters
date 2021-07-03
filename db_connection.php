@@ -8,4 +8,6 @@ $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
 
-$conn->query('show tables;');
+if(!$conn) {
+    die("Connection failed: ".mysqli_connect_error());
+}
