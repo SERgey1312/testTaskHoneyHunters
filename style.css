@@ -81,3 +81,22 @@
     min-width: 250px;
 }
 
+.user-name1{
+    background: #4b596c;
+    color:#e0e0e0;
+}
+
+.user-email1{
+    background: #e9eef3;
+    color:#6d737b;
+    font-weight: bold;
+}
+
+.user-comment1{
+    background: #e9eef3;
+    color:#6d737b;
+    font-size: 13px;
+    font-weight: normal;
+    min-height: 120px;
+}
+

@@ -1,6 +1,3 @@
-<?php
- require_once ('db_connection.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +11,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/36e24f0b80.js" crossorigin="anonymous"></script>
-
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <header class="stikcy-top bg-dark d-flex flex-column pt-5 pb-5">
@@ -31,7 +31,7 @@
             <img src="img/post.png" width="150" height="150" class="post-img" title="Введите комментарий в форму" alt="not found">
         </div>
         <div class="w-100 mt-5">
-            <form method="post" action="#">
+            <form method="post" action="#" id="main-form">
                 <div class="d-flex flex-column form-group">
                     <div class="comment_form d-flex flex-row w-100">
                         <div class="w-50 h-100 d-flex flex-column form_name_email">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="custom_btn_block form-group w-100 d-flex flex-row justify-content-end mt-5">
-                        <input type="submit" value="Записать" class="custom-btn">
+                        <input type="submit" value="Записать" class="custom-btn" id="submit-btn">
                     </div>
                 </div>
             </form>
@@ -74,28 +74,22 @@
         <div class="title text-center w-100">
             <span>Выводим комментарии</span>
         </div>
-        <div class="comments d-flex flex-row w-100 text-center flex-wrap align-items-stretch">
-            <div class="one_comment d-flex w-33 h-100" >
-                <div class="d-flex flex-column w-75 m-auto mt-5 mb-5">
-                    <div class="pt-2 pb-2" style="background: #4b596c; color:#e0e0e0;">Vasya</div>
-                    <div class="pt-3 pb-3" style="background: #e9eef3; color:#6d737b; font-weight: bold">vasya@gmail.com</div>
-                    <div class="pt-3 pb-3" style="background: #e9eef3; color:#6d737b; font-size: 13px; font-weight: normal; min-height: 120px;">Сообщение от Василия Пупкина</div>
-                </div>
-            </div>
-            <div class="one_comment d-flex w-33 h-100" >
-                <div class="d-flex flex-column w-75 m-auto mt-5 mb-5">
-                    <div class="pt-2 pb-2" style="background: #58ad52; color:#e0e0e0;">Marusia</div>
-                    <div class="pt-3 pb-3" style="background: #deebde; color:#58ad52; font-weight: bold">marusia@gmail.com</div>
-                    <div class="pt-3 pb-3" style="background: #deebde; color:#768275; font-size: 13px; font-weight: normal; min-height: 120px;">Всем привет, я Маруся</div>
-                </div>
-            </div>
-            <div class="one_comment d-flex w-33 h-100" >
-                <div class="d-flex flex-column w-75 m-auto mt-5 mb-5">
-                    <div class="pt-2 pb-2" style="background: #4b596c; color:#e0e0e0;">Vasya</div>
-                    <div class="pt-3 pb-3" style="background: #e9eef3; color:#6d737b; font-weight: bold">vasya@gmail.com</div>
-                    <div class="pt-3 pb-3" style="background: #e9eef3; color:#6d737b; font-size: 13px; font-weight: normal; min-height: 120px;">Сообщение от Василия Пупкина</div>
-                </div>
-            </div>
+        <div class="comments d-flex flex-row w-100 text-center flex-wrap align-items-stretch" id = "comments">
+
+<!--            <div class="one_comment d-flex w-33 h-100" >-->
+<!--                <div class="d-flex flex-column w-75 m-auto mt-5 mb-5">-->
+<!--                    <div class="pt-2 pb-2" style="background: #58ad52; color:#e0e0e0;">Marusia</div>-->
+<!--                    <div class="pt-3 pb-3" style="background: #deebde; color:#58ad52; font-weight: bold">marusia@gmail.com</div>-->
+<!--                    <div class="pt-3 pb-3" style="background: #deebde; color:#768275; font-size: 13px; font-weight: normal; min-height: 120px;">Всем привет, я Маруся</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="one_comment d-flex w-33 h-100" >-->
+<!--                <div class="d-flex flex-column w-75 m-auto mt-5 mb-5">-->
+<!--                    <div class="pt-2 pb-2 user-name1">Vasya</div>-->
+<!--                    <div class="pt-3 pb-3 user-email1">vasya@gmail.com</div>-->
+<!--                    <div class="pt-3 pb-3 user-comment1">Сообщение от Василия Пупкина</div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 
@@ -124,5 +118,44 @@
         </div>
     </div>
 </footer>
+
+<script type="text/javascript">
+    $('#main-form').submit( function (event){
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "from_db.php",
+            success: function (result){
+                let comments = document.getElementById('comments');
+                comments.innerHTML = '';
+                result = JSON.parse(result);
+                result.forEach(function (item) {
+                    let one_comment = document.createElement('div');
+                    let one_comment_container = document.createElement('div')
+                    let name = document.createElement('div');
+                    let email = document.createElement('div');
+                    let comment = document.createElement('div');
+
+                    one_comment.classList.add('one_comment', 'flex-column', 'd-flex', 'w-33', 'h-100');
+                    one_comment_container.classList.add('d-flex', 'flex-column', 'w-75', 'm-auto', 'mt-5', 'mb-5');
+                    name.classList.add('pt-2', 'pb-2', 'user-name1');
+                    name.innerText = item.name;
+                    email.classList.add('pt-3', 'pb-3', 'user-email1');
+                    email.innerText = item.email;
+                    comment.classList.add('pt-3', 'pb-3', 'user-comment1');
+                    comment.innerText = item.comment;
+
+                    one_comment_container.append(name);
+                    one_comment_container.append(email);
+                    one_comment_container.append(comment);
+                    one_comment.append(one_comment_container);
+
+                    comments.append(one_comment)
+                })
+
+            }
+        })
+    })
+</script>
 </body>
 </html>
