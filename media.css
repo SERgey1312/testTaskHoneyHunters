@@ -1,0 +1,52 @@
+@media (max-width: 900px) {
+    .comment_form{
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .form_textarea{
+        align-items: start !important;
+        min-height: 200px !important;
+        margin: 5% auto !important;
+        width: 80% !important;
+
+    }
+
+    .form_name_email{
+        width: 80% !important;
+
+    }
+
+    .custom-textarea{
+        min-height: 200px !important;
+        width: 100% !important;
+    }
+
+    .custom-input{
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+
+    .custom_btn_block{
+        justify-content: center !important;
+    }
+
+    .header_container{
+        width: 100% !important;
+    }
+
+    .custom_btn_block{
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 1020px) {
+    .one_comment {
+        width: 40% !important;
+    }
+
+    .comments{
+        justify-content: space-around !important;
+    }
+}
