@@ -81,6 +81,11 @@
     min-width: 250px;
 }
 
+.one_comment:hover{
+    transform: scale(1.03);
+    transition: 0.3s;
+}
+
 .second .user-name{
     background: #58ad52;
     color:#e0e0e0;
@@ -118,6 +123,13 @@
     font-size: 13px;
     font-weight: normal;
     min-height: 120px;
+}
+
+#dialog-window{
+    color: #58ad52;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
 }
 
 

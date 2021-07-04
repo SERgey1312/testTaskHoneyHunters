@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    <title>Test Task</title>
+    <title>Test Task HoneyHunters</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="media.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/css/media.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/36e24f0b80.js" crossorigin="anonymous"></script>
@@ -28,7 +28,7 @@
     </a>
     <div class="d-flex flex-column align-items-center mt-5 w-75 m-auto header_container">
         <div class="justify-content-center">
-            <img src="img/post.png" width="150" height="150" class="post-img" title="Введите комментарий в форму" alt="not found">
+            <img src="./public/img/post.png" width="150" height="150" class="post-img" title="Введите комментарий в форму" alt="not found">
         </div>
         <div class="w-100 mt-5">
             <form method="post" action="#" id="main-form">
@@ -40,14 +40,14 @@
                                     Имя
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" id="name" name="name" class="form-control-lg d-block bg-dark text-light w-85 mt-2 custom-input">
+                                <input type="text" id="name" name="name" class="form-control-lg d-block bg-dark text-light w-85 mt-2 custom-input" required>
                             </div>
                             <div class="h-50">
                                 <label for="email" class="text-light d-block mt-4">
                                     E-Mail
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="email" id="email" name="email" class="form-control-lg d-block bg-dark text-light w-85 mt-2 custom-input">
+                                <input type="email" id="email" name="email" class="form-control-lg d-block bg-dark text-light w-85 mt-2 custom-input" required>
                             </div>
                         </div>
                         <div class="form_textarea w-50 d-flex flex-column align-items-end">
@@ -57,7 +57,7 @@
                                     <span class="text-danger">*</span>
                                 </label>
                             </div>
-                            <textarea id="comment" name="comment" class="form-control bg-dark text-light d-block w-85 h-100 mt-2 custom-textarea"></textarea>
+                            <textarea id="comment" name="comment" class="form-control bg-dark text-light d-block w-85 h-100 mt-2 custom-textarea" required></textarea>
                         </div>
                     </div>
                     <div class="custom_btn_block form-group w-100 d-flex flex-row justify-content-end mt-5">
@@ -66,6 +66,7 @@
                 </div>
             </form>
         </div>
+        <div id="dialog-window"></div>
     </div>
 </header>
 
@@ -76,20 +77,6 @@
         </div>
         <div class="comments d-flex flex-row w-100 text-center flex-wrap align-items-stretch" id = "comments">
 
-<!--            <div class="one_comment d-flex w-33 h-100" >-->
-<!--                <div class="d-flex flex-column w-75 m-auto mt-5 mb-5">-->
-<!--                    <div class="pt-2 pb-2 user-name">Marusia</div>-->
-<!--                    <div class="pt-3 pb-3 user-email">marusia@gmail.com</div>-->
-<!--                    <div class="pt-3 pb-3 user-comment">Всем привет, я Маруся</div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="one_comment d-flex w-33 h-100" >-->
-<!--                <div class="d-flex flex-column w-75 m-auto mt-5 mb-5">-->
-<!--                    <div class="pt-2 pb-2 user-name1">Vasya</div>-->
-<!--                    <div class="pt-3 pb-3 user-email1">vasya@gmail.com</div>-->
-<!--                    <div class="pt-3 pb-3 user-comment1">Сообщение от Василия Пупкина</div>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
     </div>
 
@@ -119,51 +106,6 @@
     </div>
 </footer>
 
-<script type="text/javascript">
-    $('#main-form').submit( function (event){
-        event.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "from_db.php",
-            success: function (result){
-                let comments = document.getElementById('comments');
-                comments.innerHTML = '';
-                result = JSON.parse(result);
-                let i = 0;
-                result.forEach(function (item) {
-                    let one_comment = document.createElement('div');
-                    let one_comment_container = document.createElement('div')
-                    let name = document.createElement('div');
-                    let email = document.createElement('div');
-                    let comment = document.createElement('div');
-
-                    one_comment.classList.add('one_comment', 'flex-column', 'd-flex', 'w-33', 'h-100');
-                    one_comment_container.classList.add('d-flex', 'flex-column', 'w-75', 'm-auto', 'mt-5', 'mb-5');
-
-                    if(i % 2 === 0){
-                        one_comment_container.classList.add('first');
-                    } else {
-                        one_comment_container.classList.add('second');
-                    }
-                    name.classList.add('pt-2', 'pb-2', 'user-name');
-                    name.innerText = item.name;
-                    email.classList.add('pt-3', 'pb-3', 'user-email');
-                    email.innerText = item.email;
-                    comment.classList.add('pt-3', 'pb-3', 'user-comment');
-                    comment.innerText = item.comment;
-
-                    one_comment_container.append(name);
-                    one_comment_container.append(email);
-                    one_comment_container.append(comment);
-                    one_comment.append(one_comment_container);
-
-                    comments.append(one_comment)
-                    i++;
-                })
-
-            }
-        })
-    })
-</script>
+<script type="text/javascript" src="./public/js/comments_work.js"></script>
 </body>
 </html>
