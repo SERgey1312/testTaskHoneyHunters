@@ -11,10 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/36e24f0b80.js" crossorigin="anonymous"></script>
-    <script
-            src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <header class="stikcy-top bg-dark d-flex flex-column pt-5 pb-5">
@@ -31,7 +29,7 @@
             <img src="./public/img/post.png" width="150" height="150" class="post-img" title="Введите комментарий в форму" alt="not found">
         </div>
         <div class="w-100 mt-5">
-            <form method="post" action="#" id="main-form">
+            <form method="post" action="#" id="main-form" role="form">
                 <div class="d-flex flex-column form-group">
                     <div class="comment_form d-flex flex-row w-100">
                         <div class="w-50 h-100 d-flex flex-column form_name_email">
@@ -40,7 +38,7 @@
                                     Имя
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" id="name" name="name" class="form-control-lg d-block bg-dark text-light w-85 mt-2 custom-input" required>
+                                <input type="text" id="name" name="name" class="form-control-lg d-block bg-dark text-light w-85 mt-2 custom-input" required autofocus>
                             </div>
                             <div class="h-50">
                                 <label for="email" class="text-light d-block mt-4">
@@ -106,6 +104,8 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="./public/js/comments_work.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+<script type="text/javascript" src="./public/js/validation.js"></script>
+<script type="text/javascript" src="public/js/scripts.js"></script>
 </body>
 </html>

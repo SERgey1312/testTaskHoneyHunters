@@ -21,3 +21,7 @@ function getComments($conn) {
     }
     return $commentsArr;
 }
+
+function validationData($name, $email, $comment){
+    
+}

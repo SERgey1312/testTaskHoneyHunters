@@ -10,18 +10,21 @@ $(document).ready(function (){
 
 $('#main-form').submit( function (event){
     event.preventDefault();
-    let data = $(this).serialize();
-    $.ajax({
-        type: "POST",
-        url: "add_to_db.php",
-        data: data,
-        success: function (result){
-            displayComments(result);
-            resetForm(2000);
-            addMessage('Сообщение успешно отправлено!');
-            disableBtn(2000);
-        }
-    })
+
+    if (checkValidation()){
+        let data = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            url: "add_to_db.php",
+            data: data,
+            success: function (result){
+                displayComments(result);
+                resetForm(2000);
+                addMessage('Сообщение успешно отправлено!');
+                disableBtn(2000);
+            }
+        })
+    }
 
 })
 
@@ -79,4 +82,21 @@ function disableBtn(ms){
     setTimeout(() => {
         $('#submit-btn').prop( "disabled", false );
     }, ms);
+}
+
+function checkValidation() {
+    let counter_error = 0;
+    let counter_check = 0;
+    let inputs = $("input");
+    let inputCount = inputs.length;
+    for (let i = 0; i < inputCount; i++){
+        if(inputs[i].classList.contains('error')){
+            counter_error++;
+        }
+        if (inputs[i].value.length === 0){
+            counter_check++;
+        }
+    }
+
+    return counter_error === 0 && counter_check === 0;
 }
