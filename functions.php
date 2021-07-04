@@ -23,5 +23,18 @@ function getComments($conn) {
 }
 
 function validationData($name, $email, $comment){
-    
+    $checkEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
+    $checkName = true;
+    $checkComment = true;
+    if (strlen($email) > 60 && strlen($email) < 5){
+        $checkEmail = false;
+    }
+    if (strlen($name) > 40 && strlen($email) < 2){
+        $checkName = false;
+    }
+    if (strlen($comment) > 240 && strlen($comment) < 3){
+        $checkComment = false;
+    }
+
+    return $checkEmail && $checkName && $checkComment;
 }
