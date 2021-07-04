@@ -1,6 +1,10 @@
 <?php
-//require_once ('db_connection.php');
-//
+require_once ('db_connection.php');
+
+if($conn){
+    echo 1;
+}
+
 //$sql_from_db = "select * from comments";
 //$comments = $conn->query($sql_from_db);
 //$commentsArr = [];
@@ -22,4 +26,3 @@
 //
 //echo json_encode($commentsArr);
 
-echo 1;
