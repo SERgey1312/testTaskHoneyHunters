@@ -16,7 +16,7 @@
 </head>
 <body>
 <header class="stikcy-top bg-dark d-flex flex-column pt-5 pb-5">
-    <a href="/" class="d-block container-fluid navbar-brad d-flex flex-row align-items-center justify-content-start w-75 m-auto text-decoration-none">
+    <a href="https://honey-hunters.ru/ru/main.html" target="_blank" class="d-block container-fluid navbar-brad d-flex flex-row align-items-center justify-content-start w-75 m-auto text-decoration-none">
         <div class="me-2">
             <img src="https://honey-hunters.ru/public/img/logo_50.png" alt="not found" width="40" height="40">
         </div>
@@ -82,7 +82,7 @@
 
 <footer class="bg-dark w-100 m-auto pt-3 pb-4">
     <div class="d-flex flex-row w-75 m-auto">
-        <a href="/" class="d-block container-fluid navbar-brad d-flex flex-row align-items-center justify-content-start w-50 text-decoration-none">
+        <a href="https://honey-hunters.ru/ru/main.html" target="_blank" class="d-block container-fluid navbar-brad d-flex flex-row align-items-center justify-content-start w-50 text-decoration-none">
             <div class="me-2">
                 <img src="https://honey-hunters.ru/public/img/logo_50.png" alt="not found" width="35" height="35">
             </div>

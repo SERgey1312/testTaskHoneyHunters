@@ -33,6 +33,10 @@
     transition: 0.4s;
 }
 
+.custom-btn:active, .custom-btn:focus {
+    background: #58ad52;
+}
+
 .custom-input, .custom-textarea{
     border: 1px solid #4d4d4d;
     resize: none;
@@ -95,6 +99,9 @@
     background: #deebde;
     color:#58ad52;
     font-weight: bold;
+    word-break: break-all;
+    padding: 2px;
+
 }
 
 .second .user-comment{
@@ -103,6 +110,7 @@
     font-size: 13px;
     font-weight: normal;
     min-height: 120px;
+    padding: 2px;
 }
 
 .first .user-name{
@@ -115,6 +123,9 @@
     background: #e9eef3;
     color:#6d737b;
     font-weight: bold;
+    word-break: break-all;
+    padding: 2px;
+
 }
 
 .first .user-comment{
@@ -123,6 +134,7 @@
     font-size: 13px;
     font-weight: normal;
     min-height: 120px;
+    padding: 2px;
 }
 
 #dialog-window{
@@ -130,6 +142,7 @@
     font-weight: bold;
     font-size: 20px;
     text-align: center;
+    margin-top: 20px;
 }
 
 .error {
