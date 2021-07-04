@@ -1,11 +1,4 @@
 $(document).ready(function () {
-    jQuery.validator.addMethod('username_rule', function (value, element) {
-        if (/^[a-zA-Z0-9_-]+$/.test(value)) {
-            return true;
-        } else {
-            return false;
-        };
-    });
     jQuery.validator.addMethod('email_rule', function (value, element) {
         if (/^([a-zA-Z0-9_\-\.]+)\+?([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test(value)) {
             return true;
@@ -22,7 +15,6 @@ $(document).ready(function () {
                 maxlength: 60,
             },
             'name': {
-                username_rule:true,
                 required: true,
                 minlength: 2,
                 maxlength: 40,
@@ -42,7 +34,6 @@ $(document).ready(function () {
                 maxlength: 'E-Mail слишком длинный',
             },
             'name': {
-                username_rule: 'Введите корректное имя',
                 required: 'Поле ИМЯ обязательно',
                 minlength: 'Имя слишком короткое',
                 maxlength: 'Имя слишком длинное',
