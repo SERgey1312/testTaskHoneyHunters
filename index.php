@@ -78,9 +78,9 @@
 
 <!--            <div class="one_comment d-flex w-33 h-100" >-->
 <!--                <div class="d-flex flex-column w-75 m-auto mt-5 mb-5">-->
-<!--                    <div class="pt-2 pb-2" style="background: #58ad52; color:#e0e0e0;">Marusia</div>-->
-<!--                    <div class="pt-3 pb-3" style="background: #deebde; color:#58ad52; font-weight: bold">marusia@gmail.com</div>-->
-<!--                    <div class="pt-3 pb-3" style="background: #deebde; color:#768275; font-size: 13px; font-weight: normal; min-height: 120px;">Всем привет, я Маруся</div>-->
+<!--                    <div class="pt-2 pb-2 user-name">Marusia</div>-->
+<!--                    <div class="pt-3 pb-3 user-email">marusia@gmail.com</div>-->
+<!--                    <div class="pt-3 pb-3 user-comment">Всем привет, я Маруся</div>-->
 <!--                </div>-->
 <!--            </div>-->
 <!--            <div class="one_comment d-flex w-33 h-100" >-->
@@ -129,6 +129,7 @@
                 let comments = document.getElementById('comments');
                 comments.innerHTML = '';
                 result = JSON.parse(result);
+                let i = 0;
                 result.forEach(function (item) {
                     let one_comment = document.createElement('div');
                     let one_comment_container = document.createElement('div')
@@ -138,11 +139,17 @@
 
                     one_comment.classList.add('one_comment', 'flex-column', 'd-flex', 'w-33', 'h-100');
                     one_comment_container.classList.add('d-flex', 'flex-column', 'w-75', 'm-auto', 'mt-5', 'mb-5');
-                    name.classList.add('pt-2', 'pb-2', 'user-name1');
+
+                    if(i % 2 === 0){
+                        one_comment_container.classList.add('first');
+                    } else {
+                        one_comment_container.classList.add('second');
+                    }
+                    name.classList.add('pt-2', 'pb-2', 'user-name');
                     name.innerText = item.name;
-                    email.classList.add('pt-3', 'pb-3', 'user-email1');
+                    email.classList.add('pt-3', 'pb-3', 'user-email');
                     email.innerText = item.email;
-                    comment.classList.add('pt-3', 'pb-3', 'user-comment1');
+                    comment.classList.add('pt-3', 'pb-3', 'user-comment');
                     comment.innerText = item.comment;
 
                     one_comment_container.append(name);
@@ -151,6 +158,7 @@
                     one_comment.append(one_comment_container);
 
                     comments.append(one_comment)
+                    i++;
                 })
 
             }
