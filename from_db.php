@@ -2,9 +2,9 @@
 require_once ('db_connection.php');
 
 if($conn){
-    $sql_from_db = "select * from comments";
+    $sql_from_db = "mysql --version";
     $comments = $conn->query($sql_from_db);
-    echo count($comments);
+    echo $comments;
 }
 
 //$commentsArr = [];
