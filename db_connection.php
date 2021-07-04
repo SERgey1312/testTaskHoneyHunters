@@ -1,26 +1,10 @@
 <?php
-if ($_SERVER['SERVER_NAME'] == "testtaskhoneyhunters.herokuapp.com"){
-    $url = parse_url(getenv("DATABASE_URL"));
 
-    $server = $url["host"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $db = substr($url["path"], 1);
+$url = parse_url('mysql://b45fcdaa903f14:d0ab8960@eu-cdbr-west-01.cleardb.com/heroku_6e9c21ce3c72933?reconnect=true');
 
-    $conn = new mysqli($server, $username, $password, $db);
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
 
-    if(!$conn) {
-        die("Connection failed: ".mysqli_connect_error());
-    }
-} else {
-    $server = 'localhost:3306';
-    $dbname = 'honeyhunters';
-    $username = 'root';
-    $password = 'password';
-
-    $conn = new mysqli($server, $username, $password, $dbname);
-
-    if(!$conn) {
-        die("Connection failed: ".mysqli_connect_error());
-    }
-}
+$conn = new mysqli($server, $username, $password, $db);
