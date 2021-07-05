@@ -3,7 +3,7 @@ _Этот проект - тестовое задание._
 
 _Данный проект задеплоен на Heroku и доступен по ссылке:_
 
-<http://testtaskhoneyhunters.herokuapp.com/>
+<https://testtaskhoneyhunters.herokuapp.com/>
 
 ***
 
